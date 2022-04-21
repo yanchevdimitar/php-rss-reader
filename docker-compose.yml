@@ -1,0 +1,47 @@
+version: "3.2"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        image: cloudsigma.com/php
+        container_name: app
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - ./:/var/www/html/
+            - ./docker/php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+        environment:
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
+        working_dir: /var/www/html/
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "9500:80"
+        links:
+            - app
+        volumes:
+            - ./:/var/www/html/
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d
+    db:
+        image: mysql:5.7.32
+        container_name: db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "13012:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+        environment:
+            MYSQL_DATABASE: laravel_web
+            MYSQL_ROOT_PASSWORD: password
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+volumes:
+    mysql_data:
+        driver: local
