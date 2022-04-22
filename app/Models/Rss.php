@@ -31,17 +31,12 @@ class Rss extends Model
 
     ];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        "url" => "required"
+    public static array $rules = [
+        'url' => 'required|url',
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function freeRegistrations(): HasMany
     {
