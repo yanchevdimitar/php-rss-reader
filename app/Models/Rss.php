@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Events\RssDelete;
+use App\Events\RssSaved;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -33,6 +35,16 @@ class Rss extends Model
 
     public static array $rules = [
         'url' => 'required|url',
+    ];
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' => RssSaved::class,
+        'deleted' => RssDelete::class,
     ];
 
     /**
