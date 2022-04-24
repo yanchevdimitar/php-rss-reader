@@ -23,6 +23,7 @@ class Feed extends Model
         "title",
         "source",
         "source_url",
+        "link",
         "publish_date",
         "description"
     ];
