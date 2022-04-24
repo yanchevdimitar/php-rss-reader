@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use App\Events\RssSaved as RssSavedEvent;
 use App\Repositories\RssRepository;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use NeedleProject\LaravelRabbitMq\PublisherInterface;
@@ -12,7 +11,7 @@ class RssChanged
     /**
      * @throws BindingResolutionException
      */
-    public function handle(RssSavedEvent $event)
+    public function handle($event)
     {
         $rssRepository = new RssRepository($event->rss);
         $urls = $rssRepository->get();
