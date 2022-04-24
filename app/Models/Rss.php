@@ -50,8 +50,13 @@ class Rss extends Model
     /**
      * @return HasMany
      */
-    public function freeRegistrations(): HasMany
+    public function feeds(): HasMany
     {
         return $this->hasMany(Feed::class, 'rss_id');
+    }
+
+    public function deleteFeeds(): ?bool
+    {
+        return $this->feeds()->delete();
     }
 }

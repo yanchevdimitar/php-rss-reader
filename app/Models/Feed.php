@@ -10,6 +10,7 @@ class Feed extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     /**
      * @var string
      */
@@ -42,7 +43,7 @@ class Feed extends Model
     /**
      * @return BelongsTo
      */
-    public function account(): BelongsTo
+    public function rss(): BelongsTo
     {
         return $this->belongsTo(Rss::class, 'rss_id');
     }
