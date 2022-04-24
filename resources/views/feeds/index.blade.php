@@ -30,6 +30,10 @@
                 <tr>
                     <td>{{$feed->title}}</td>
                     <td>{{$feed->source}}</td>
+                    <td>{{$feed->source_url}}</td>
+                    <td>{{$feed->link}}</td>
+                    <td>{{$feed->publish_date}}</td>
+                    <td>{{$feed->description}}</td>
                 </tr>
             @endforeach
             </tbody>

@@ -19,6 +19,7 @@
             <tr>
                 <td>Url</td>
                 <td colspan="2">Action</td>
+                <td><a href="{{ route('rss.create')}}" class="btn btn-primary">Add</a></td>
             </tr>
             </thead>
             <tbody>
@@ -26,7 +27,6 @@
                 <tr>
                     <td>{{$rss->url}}</td>
                     <td><a href="{{ route('rss.edit', $rss->id)}}" class="btn btn-primary">Edit</a></td>
-                    <td><a href="{{ route('rss.create', $rss->id)}}" class="btn btn-primary">Add</a></td>
                     <td>
                         <form action="{{ route('rss.destroy', $rss->id)}}" method="post">
                             @csrf
