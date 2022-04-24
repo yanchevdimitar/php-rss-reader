@@ -1,9 +1,7 @@
 # php-rss-reader
-
-Create .env form .env.example
-
-Run:
 ```
+Create .env form .env.example
+Run:
     docker-compose up -d
     docker exec app php artisan key:generate
     docker exec app php artisan migrate
