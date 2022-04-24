@@ -9,7 +9,7 @@ Run:
     docker exec app php artisan migrate
     docker exec app php artisan queue:listen
     docker exec app php artisan schedule:work
-    ```
+
 
 Local Urls:
     http://127.0.0.1:9500/feed
